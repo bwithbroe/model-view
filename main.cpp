@@ -22,7 +22,7 @@ void display();
 void specialKeys();
 
 double rotate_x=0, rotate_y=0;
-double xpos = 0, ypos = 0, zpos = 0, xrot = 0, yrot = 0, angle=0.0;
+double xpos = 0, ypos = 0, zpos = 0, xrot = 0, yrot = 0;
 
 int drawMode = 0;
 int face_to_change = 1;
@@ -35,11 +35,11 @@ void cube() {
 
   glEnableClientState(GL_VERTEX_ARRAY);
   glEnableClientState(GL_COLOR_ARRAY);
-  glVertexPointer(3, GL_FLOAT, 0, super_ellipse.vertices_);
-  glColorPointer(3, GL_FLOAT, 0, super_ellipse.colors_);
+  glVertexPointer(3, GL_FLOAT, 0, super_ellipse.vertices());
+  glColorPointer(3, GL_FLOAT, 0, super_ellipse.colors());
 
   glPushMatrix();
-  glDrawElements(GL_TRIANGLES, 4*3*(super_ellipse.k_*8), GL_UNSIGNED_BYTE, super_ellipse.indices_);
+  glDrawElements(GL_TRIANGLES, 4*3*(super_ellipse.k_*8), GL_UNSIGNED_BYTE, super_ellipse.indices());
   glPopMatrix();
 
   glDisableClientState(GL_VERTEX_ARRAY);
@@ -137,38 +137,38 @@ void specialKeys( int key, int x, int y ) {
   } else if(super_ellipse.move_mode_ == "faces") {
     if(face_to_change == 1) {
       if(key == GLUT_KEY_RIGHT) {
-        if(super_ellipse.face_1_x_angle_ < M_PI / 4) {
-          super_ellipse.face_1_x_angle_ += M_PI / 24;
+        if(super_ellipse.faceAngle(1, x) < M_PI / 4) {
+          super_ellipse.setFaceAngle(1, x, M_PI / 24);
         }
       } else if(key == GLUT_KEY_LEFT) {
-        if(super_ellipse.face_1_x_angle_ > -M_PI / 4) {
-          super_ellipse.face_1_x_angle_ -= M_PI / 24;
+        if(super_ellipse.faceAngle(1, x) > -M_PI / 4) {
+          super_ellipse.setFaceAngle(1, x, -M_PI / 24);
         }
       } else if(key == GLUT_KEY_UP) {
-        if(super_ellipse.face_1_y_angle_ < M_PI / 4) {
-          super_ellipse.face_1_y_angle_ += M_PI / 24;
+        if(super_ellipse.faceAngle(1, y) < M_PI / 4) {
+          super_ellipse.setFaceAngle(1, y, M_PI / 24);
         }
       } else if(key == GLUT_KEY_DOWN) {
-        if(super_ellipse.face_1_y_angle_ > -M_PI / 4) {
-          super_ellipse.face_1_y_angle_ -= M_PI / 24;
+        if(super_ellipse.faceAngle(1, y) > -M_PI / 4) {
+          super_ellipse.setFaceAngle(1, y, -M_PI / 24);
         }
       }
     } else if(face_to_change == 2){
       if(key == GLUT_KEY_RIGHT) {
-        if(super_ellipse.face_2_x_angle_ < M_PI / 4) {
-          super_ellipse.face_2_x_angle_ += M_PI / 24;
+        if(super_ellipse.faceAngle(2, x) < M_PI / 4) {
+          super_ellipse.setFaceAngle(2, x, M_PI / 24);
         }
       } else if(key == GLUT_KEY_LEFT) {
-        if(super_ellipse.face_2_x_angle_ > -M_PI / 4) {
-          super_ellipse.face_2_x_angle_ -= M_PI / 24;
+        if(super_ellipse.faceAngle(2, x) > -M_PI / 4) {
+          super_ellipse.setFaceAngle(2, x, -M_PI / 24);
         }
       } else if(key == GLUT_KEY_UP) {
-        if(super_ellipse.face_2_y_angle_ < M_PI / 4) {
-          super_ellipse.face_2_y_angle_ += M_PI / 24;
+        if(super_ellipse.faceAngle(2, y) < M_PI / 4) {
+          super_ellipse.setFaceAngle(2, y, M_PI / 24);
         }
       } else if(key == GLUT_KEY_DOWN) {
-        if(super_ellipse.face_2_y_angle_ > -M_PI / 4) {
-          super_ellipse.face_2_y_angle_ -= M_PI / 24;
+        if(super_ellipse.faceAngle(2, y) > -M_PI / 4) {
+          super_ellipse.setFaceAngle(2, y, -M_PI / 24);
         }
       }
     }

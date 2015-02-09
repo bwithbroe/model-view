@@ -72,13 +72,6 @@ void SuperEllipse::genColors() {
   c_size_ = 0;
 }
 
-// From StackExchange top answer to this question:
-//http://stackoverflow.com/questions/1903954/is-there-a-standard-sign-function-signum-sgn-in-c-c
-template<typename T> int sgn(T val) {
-  return (T(0) < val) - (val < T(0));
-}
-template int sgn<int>(T val);
-
 // Signed pow function for use in the vertex generation
 float SuperEllipse::signedPow(float x, float n) {
   float i = sgn(x);
@@ -154,6 +147,51 @@ void SuperEllipse::genIndices() {
     indices_[i_size_++] = q + i;
     indices_[i_size_++] = q + next;
     //    printf("Tris: [%i,%i,%i] [%i,%i,%i] [%i,%i,%i] [%i,%i,%i]\n", indices_[i_size_-12], indices_[i_size_-11], indices_[i_size_-10], indices_[i_size_-9], indices_[i_size_-8], indices_[i_size_-7], indices_[i_size_-6], indices_[i_size_-5], indices_[i_size_-4], indices_[i_size_-3], indices_[i_size_-2], indices_[i_size_-1]);
+  }
+}
+
+GLfloat * SuperEllipse::vertices() {
+  return vertices_;
+}
+
+GLubyte * SuperEllipse::indices() {
+  return indices_;
+}
+
+GLfloat * SuperEllipse::colors() {
+  return colors_;
+}
+
+float SuperEllipse::faceAngle(int face, char axis) {
+  if(face == 1) {
+    if(axis == 'x') {
+      return face_1_x_angle_;
+    } else if(axis == 'y') {
+      return face_1_y_angle_;
+    }
+  } else if(face == 2) {
+    if(axis == 'x') {
+      return face_2_x_angle_;
+    } else if(axis == 'y') {
+      return face_2_y_angle_;
+    }
+  }
+  return 0;
+}
+
+void SuperEllipse::setFaceAngle(int face, char axis, float change) {
+  if(face == 1) {
+    if(axis == 'x') {
+      face_1_x_angle_ += change;
+    } else if(axis == 'y') {
+      face_1_y_angle_ += change;
+    }
+  } else if(face == 2) {
+    if(axis == 'x') {
+      face_2_x_angle_ += change;
+    } else if(axis == 'y') {
+      face_2_y_angle_ += change;
+    }
   }
 }
 
