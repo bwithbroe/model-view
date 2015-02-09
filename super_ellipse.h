@@ -4,14 +4,15 @@
 // An extruded superellipse in space, with adjustable major and minor axis,
 // length, face angles, and number of points on each face.
 class SuperEllipse {
- public:
+public:
   SuperEllipse(float a, float b, float c, float n, int k,
-               float center[3], float color[3]);
+  float center[3], float color[3]);
   SuperEllipse(float a, float b, float c, float n, int k, int max_size,
-               float center[3], float color[3]);
+  float center[3], float color[3]);
   void genVerticesAndIndices();
- // private:
-  int sgn(float val);
+
+  // private:
+  template<typename T> extern int sgn(T val);
   float signedPow(float x, float n);
   void genColors();
   void genVertices();

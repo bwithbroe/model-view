@@ -18,7 +18,7 @@
 #define M_PI 3.1415926535
 
 SuperEllipse::SuperEllipse(float a, float b, float c, float n, int k,
-                           float center[3], float color[3]) {
+float center[3], float color[3]) {
   a_ = a;
   b_ = b;
   c_ = c;
@@ -39,7 +39,7 @@ SuperEllipse::SuperEllipse(float a, float b, float c, float n, int k,
 }
 
 SuperEllipse::SuperEllipse(float a, float b, float c, float n, int k,
-                           int max_size, float center[3], float color[3]) {
+int max_size, float center[3], float color[3]) {
   a_ = a;
   b_ = b;
   c_ = c;
@@ -67,25 +67,27 @@ void SuperEllipse::genVerticesAndIndices() {
 
 void SuperEllipse::genColors() {
   for (float i = 1; i <= 24*k_ + 2; i++) {
-      colors_[c_size_++] = (1/i)/2 +.5;
+    colors_[c_size_++] = (1/i)/2 +.5;
   }
   c_size_ = 0;
 }
 
 // From StackExchange top answer to this question:
-// http://stackoverflow.com/questions/1903954/is-there-a-standard-sign-function-signum-sgn-in-c-c
-int SuperEllipse::sgn(float val) {
-  return (val > 0) - (val < 0);
+//http://stackoverflow.com/questions/1903954/is-there-a-standard-sign-function-signum-sgn-in-c-c
+template<typename T> int sgn(T val) {
+  return (T(0) < val) - (val < T(0));
 }
+template int sgn<int>(T val);
 
+// Signed pow function for use in the vertex generation
 float SuperEllipse::signedPow(float x, float n) {
   float i = sgn(x);
   x = fabs(x);
   return i * pow(x, n);
 }
 
-// gen all the exterior points of the superellipse end-caps, as well as a
-// center_ point for each.
+// gen all the exterior points of the superellipse end-caps, as well as a center_ point
+// for each.
 void SuperEllipse::genVertices() {
   v_size_ = 0;
   c_size_ = 0;
@@ -151,7 +153,7 @@ void SuperEllipse::genIndices() {
     indices_[i_size_++] = q;
     indices_[i_size_++] = q + i;
     indices_[i_size_++] = q + next;
-//    printf("Tris: [%i,%i,%i] [%i,%i,%i] [%i,%i,%i] [%i,%i,%i]\n", indices_[i_size_-12], indices_[i_size_-11], indices_[i_size_-10], indices_[i_size_-9], indices_[i_size_-8], indices_[i_size_-7], indices_[i_size_-6], indices_[i_size_-5], indices_[i_size_-4], indices_[i_size_-3], indices_[i_size_-2], indices_[i_size_-1]);
+    //    printf("Tris: [%i,%i,%i] [%i,%i,%i] [%i,%i,%i] [%i,%i,%i]\n", indices_[i_size_-12], indices_[i_size_-11], indices_[i_size_-10], indices_[i_size_-9], indices_[i_size_-8], indices_[i_size_-7], indices_[i_size_-6], indices_[i_size_-5], indices_[i_size_-4], indices_[i_size_-3], indices_[i_size_-2], indices_[i_size_-1]);
   }
 }
 

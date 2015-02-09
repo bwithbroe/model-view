@@ -16,6 +16,8 @@
 #define _USE_MATH_DEFINES
 #define M_PI 3.1415926535
 
+// Windows compile: g++ -std=c++11 -o super_ellipse -Wall super_ellpse.cpp main.cpp -mwindows -lglut32 -lopengl32 -lglu32
+
 void display();
 void specialKeys();
 
@@ -276,7 +278,7 @@ void keyboard (unsigned char key, int x, int y) {
 }
 
 int main(int argc, char* argv[]) {
-    //  Initialize GLUT and process user parameters
+  //  Initialize GLUT and process user parameters
   glutInit(&argc,argv);
 
   //  Request double buffered true color window with Z-buffer
