@@ -18,6 +18,21 @@
 #define _USE_MATH_DEFINES
 #define M_PI 3.1415926535
 
+// SuperEllipse Controller::model_;
+
+int Controller::draw_mode_;
+int Controller::face_to_change_;
+SuperEllipse Controller::model_;
+
+std::string Controller::move_mode_;
+
+double Controller::rotate_x_, Controller::rotate_y_;
+double Controller::xpos_, Controller::ypos_, Controller::zpos_;
+double Controller::xrot_, Controller::yrot_;
+
+Controller::Controller() {
+}
+
 Controller::Controller(SuperEllipse & model) {
   model_ = model;
   move_mode_ = "move";
@@ -39,18 +54,18 @@ void Controller::initViewer(double & rotate_x, double & rotate_y,
 
 void Controller::specialKeys( int key, int x, int y ) {
   if(move_mode_ == "rotate") {
-    //  Right arrow - increase rotation by 2 degrees
-    if(key == GLUT_KEY_RIGHT) {
-      rotate_y_ += 2;
-      //  Left arrow - decrease rotation by 2 degrees
-    } else if(key == GLUT_KEY_LEFT) {
-      rotate_y_ -= 2;
 
-    } else if(key == GLUT_KEY_UP) {
+    if(key == GLUT_KEY_UP) {
       rotate_x_ -= 2;
 
     } else if(key == GLUT_KEY_DOWN) {
       rotate_x_ += 2;
+
+    } else if(key == GLUT_KEY_RIGHT) {
+      rotate_y_ += 2;
+
+    } else if(key == GLUT_KEY_LEFT) {
+      rotate_y_ -= 2;
     }
 
   } else if(move_mode_ == "move") {

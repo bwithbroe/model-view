@@ -4,6 +4,7 @@
 // A controller program that recieves keyboard input and passes it to the model
 class Controller {
  public:
+  Controller();
   Controller(SuperEllipse & model);
   void initViewer(double & rotate_x, double & rotate_y,
                   double & xpos, double & ypos, double & zpos,
@@ -25,8 +26,5 @@ class Controller {
   static int draw_mode_;
   static int face_to_change_;
 };
-
-// int Controller::draw_mode_;
-// int Controller::face_to_change_;
 
 #endif

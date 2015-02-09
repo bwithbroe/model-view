@@ -15,6 +15,15 @@
 #include "controller.h"
 #include "viewer.h"
 
+SuperEllipse Viewer::model_;
+Controller Viewer::controller_;
+
+double Viewer::rotate_x_, Viewer::rotate_y_;
+double Viewer::xpos_, Viewer::ypos_, Viewer::zpos_;
+double Viewer::xrot_, Viewer::yrot_;
+
+int face_to_change;
+
 Viewer::Viewer(SuperEllipse & model, Controller & controller) {
   rotate_x_ = 0; rotate_y_ = 0;
   xpos_ = 0; ypos_ = 0; zpos_ = 0;

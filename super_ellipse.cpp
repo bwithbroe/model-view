@@ -17,6 +17,9 @@
 // #define max_size_ 20
 #define M_PI 3.1415926535
 
+SuperEllipse::SuperEllipse() {
+}
+
 SuperEllipse::SuperEllipse(float a, float b, float c, float n, int k,
 float center[3], float color[3]) {
   a_ = a;

@@ -5,6 +5,7 @@
 // length, face angles, and number of points on each face.
 class SuperEllipse {
  public:
+  SuperEllipse();
   SuperEllipse(float a, float b, float c, float n, int k,
                float center[3], float color[3]);
   SuperEllipse(float a, float b, float c, float n, int k, int max_size,
