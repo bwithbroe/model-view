@@ -72,7 +72,7 @@ void Viewer::display() {
   glRotatef(rotate_x_, 1.0, 0.0, 0.0 );
   glRotatef(rotate_y_, 0.0, 1.0, 0.0 );
 
-  // model();
+  model();
 
   glFlush();
   glutSwapBuffers();
@@ -110,7 +110,7 @@ void Viewer::initGlut(int argc, char * argv[]) {
   glutReshapeFunc(reshape);
   // glutKeyboardFunc(controller_->keyboard);
   // glutSpecialFunc(controller_->specialKeys);
-  // controller_->initControls();
+  controller_->initControls();
 
   //  Pass control to GLUT for events
   glutMainLoop();
