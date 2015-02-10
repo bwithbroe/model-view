@@ -36,6 +36,7 @@ float center[3], float color[3]) {
   // indices_ = new GLubyte[96*k_];
   // colors_ = new GLfloat[25*k_ + 3];
 
+  clearVerticesAndIndices();
   genVertices();
   genIndices();
   genColors();
@@ -58,6 +59,7 @@ int max_size, float center[3], float color[3]) {
   // indices_ = new GLubyte[96*k_];
   // colors_ = new GLfloat[25*k_ + 3];
 
+  clearVerticesAndIndices();
   genVertices();
   genIndices();
   genColors();
@@ -199,10 +201,10 @@ void SuperEllipse::setFaceAngle(int face, char axis, float change) {
 }
 
 void SuperEllipse::clearVerticesAndIndices() {
-  for(int i = 0; i < 25*k_ + 3; ++i) {
+  for(int i = 0; i < 25*20 + 3; ++i) {
     vertices_[i] = 0;
   }
-  for(int i = 0; i < 96*k_; ++i) {
+  for(int i = 0; i < 96*20; ++i) {
     indices_[i] = 0;
   }
 }
