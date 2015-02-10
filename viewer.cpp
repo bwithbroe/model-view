@@ -96,8 +96,8 @@ void Viewer::initGlut(int argc, char * argv[]) {
   glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
 
   // Create window
-  glutCreateWindow("Awesome Cube");
   glutInitWindowSize(1000,800);
+  glutCreateWindow("Awesome Cube");
 
   //  Enable Z-buffer depth test
   glClearDepth(1.0f);
