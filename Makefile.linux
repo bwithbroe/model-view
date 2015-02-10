@@ -1,0 +1,4 @@
+all:
+	g++ main.cpp super_ellipse.cpp -o super_ellipse -lGL -lGLU -lglut -std=gnu++11
+clean:
+	rm *.o super_ellipse
