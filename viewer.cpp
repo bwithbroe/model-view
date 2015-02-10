@@ -29,8 +29,8 @@ Viewer::Viewer(SuperEllipse & model, Controller & controller) {
   xpos_ = 0; ypos_ = 0; zpos_ = 0;
   xrot_ = 0; yrot_ = 0;
 
-  *model_ = model;
-  *controller_ = controller;
+  model_ = &model;
+  controller_ = &controller;
   controller_->initViewer(rotate_x_, rotate_y_,
                          xpos_, ypos_, zpos_, xrot_, yrot_);
 }

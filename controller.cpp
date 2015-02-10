@@ -34,7 +34,7 @@ Controller::Controller() {
 }
 
 Controller::Controller(SuperEllipse & model) {
-  *model_ = model;
+  model_ = &model;
   move_mode_ = "move";
   draw_mode_ = 0;
   face_to_change_ = 1;
@@ -43,13 +43,13 @@ Controller::Controller(SuperEllipse & model) {
 void Controller::initViewer(double & rotate_x, double & rotate_y,
                             double & xpos, double & ypos, double & zpos,
                             double & xrot, double & yrot) {
-  *rotate_x_ = rotate_x;
-  *rotate_y_ = rotate_y;
-  *xpos_ = xpos;
-  *ypos_ = ypos;
-  *zpos_ = zpos;
-  *xrot_ = xrot;
-  *yrot_ = yrot;
+  rotate_x_ = &rotate_x;
+  rotate_y_ = &rotate_y;
+  xpos_ = &xpos;
+  ypos_ = &ypos;
+  zpos_ = &zpos;
+  xrot_ = &xrot;
+  yrot_ = &yrot;
 }
 
 void Controller::specialKeys( int key, int x, int y ) {
