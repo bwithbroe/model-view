@@ -15,8 +15,8 @@
 #include "controller.h"
 #include "viewer.h"
 
-SuperEllipse Viewer::model_;
-Controller Viewer::controller_;
+SuperEllipse * Viewer::model_;
+Controller * Viewer::controller_;
 
 double Viewer::rotate_x_, Viewer::rotate_y_;
 double Viewer::xpos_, Viewer::ypos_, Viewer::zpos_;
@@ -29,22 +29,22 @@ Viewer::Viewer(SuperEllipse & model, Controller & controller) {
   xpos_ = 0; ypos_ = 0; zpos_ = 0;
   xrot_ = 0; yrot_ = 0;
 
-  model_ = model;
-  controller_ = controller;
-  controller_.initViewer(rotate_x_, rotate_y_,
+  *model_ = model;
+  *controller_ = controller;
+  controller_->initViewer(rotate_x_, rotate_y_,
                          xpos_, ypos_, zpos_, xrot_, yrot_);
 }
 
 void Viewer::model() {
-  model_.genVerticesAndIndices();
+  model_->genVerticesAndIndices();
 
   glEnableClientState(GL_VERTEX_ARRAY);
   glEnableClientState(GL_COLOR_ARRAY);
-  glVertexPointer(3, GL_FLOAT, 0, model_.vertices());
-  glColorPointer(3, GL_FLOAT, 0, model_.colors());
+  glVertexPointer(3, GL_FLOAT, 0, model_->vertices());
+  glColorPointer(3, GL_FLOAT, 0, model_->colors());
 
   glPushMatrix();
-  glDrawElements(GL_TRIANGLES, 4*3*(model_.k_*8), GL_UNSIGNED_BYTE, model_.indices());
+  glDrawElements(GL_TRIANGLES, 4*3*(model_->k_*8), GL_UNSIGNED_BYTE, model_->indices());
   glPopMatrix();
 
   glDisableClientState(GL_VERTEX_ARRAY);
@@ -72,7 +72,7 @@ void Viewer::display() {
   glRotatef(rotate_x_, 1.0, 0.0, 0.0 );
   glRotatef(rotate_y_, 0.0, 1.0, 0.0 );
 
-  model();
+  // model();
 
   glFlush();
   glutSwapBuffers();
@@ -97,6 +97,7 @@ void Viewer::initGlut(int argc, char * argv[]) {
 
   // Create window
   glutCreateWindow("Awesome Cube");
+  glutInitWindowSize(1000,800);
 
   //  Enable Z-buffer depth test
   glClearDepth(1.0f);
@@ -107,9 +108,9 @@ void Viewer::initGlut(int argc, char * argv[]) {
   glutDisplayFunc(display);
   glutIdleFunc(display);
   glutReshapeFunc(reshape);
-  // glutKeyboardFunc(controller_.keyboard);
-  // glutSpecialFunc(controller_.specialKeys);
-  controller_.initControls();
+  // glutKeyboardFunc(controller_->keyboard);
+  // glutSpecialFunc(controller_->specialKeys);
+  // controller_->initControls();
 
   //  Pass control to GLUT for events
   glutMainLoop();
