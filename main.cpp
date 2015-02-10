@@ -16,7 +16,7 @@
 #define _USE_MATH_DEFINES
 #define M_PI 3.1415926535
 
-// Windows compile: g++ -std=c++11 -o super_ellipse -Wall super_ellpse.cpp main.cpp -mwindows -lglut32 -lopengl32 -lglu32
+// Windows compile: g++ -std=c++11 -o super_ellipse super_ellpse.cpp main.cpp -mwindows -lglut32 -lopengl32 -lglu32
 
 void display();
 void specialKeys();
@@ -285,6 +285,7 @@ int main(int argc, char* argv[]) {
   glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
 
   // Create window
+  glutInitWindowSize(1000,800);
   glutCreateWindow("Awesome Cube");
 
   //  Enable Z-buffer depth test

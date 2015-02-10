@@ -15,13 +15,13 @@ class Controller {
   static void specialKeys(int key, int x, int y);
   static void keyboard(unsigned char key, int x, int y);
 
-  static SuperEllipse model_;
+  static SuperEllipse * model_;
 
   static std::string move_mode_;
 
-  static double rotate_x_, rotate_y_;
-  static double xpos_, ypos_, zpos_;
-  static double xrot_, yrot_;
+  static double * rotate_x_, * rotate_y_;
+  static double * xpos_, * ypos_, * zpos_;
+  static double * xrot_, * yrot_;
 
   static int draw_mode_;
   static int face_to_change_;

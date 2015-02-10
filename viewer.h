@@ -13,8 +13,8 @@ private:
   static void display();
   static void reshape(int w, int h);
 
-  static SuperEllipse model_;
-  static Controller controller_;
+  static SuperEllipse * model_;
+  static Controller * controller_;
 
   static double rotate_x_, rotate_y_;
   static double xpos_, ypos_, zpos_, xrot_, yrot_;
