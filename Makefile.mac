@@ -1,5 +1,5 @@
 all:
 	#g++ main.cpp super_ellipse.cpp -o super_ellipse -framework GLUT -framework OpenGL
-	g++ main-new.cpp super_ellipse.cpp controller.cpp viewer.cpp -o super_ellipse -framework GLUT -framework OpenGL
+	g++ main.cpp super_ellipse.cpp controller.cpp viewer.cpp -o super_ellipse -framework GLUT -framework OpenGL
 clean:
 	rm *.o super_ellipse
