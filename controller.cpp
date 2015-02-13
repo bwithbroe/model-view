@@ -98,44 +98,23 @@ void Controller::specialKeys( int key, int x, int y ) {
     }
 
   } else if(move_mode_ == "faces") {
-    if(face_to_change_ == 1) {
-      if(key == GLUT_KEY_RIGHT) {
-        if(model_->faceAngle(1, x) < M_PI / 4) {
-          model_->setFaceAngle(1, x, M_PI / 24);
-        }
-      } else if(key == GLUT_KEY_LEFT) {
-        if(model_->faceAngle(1, x) > -M_PI / 4) {
-          model_->setFaceAngle(1, x, -M_PI / 24);
-        }
-      } else if(key == GLUT_KEY_UP) {
-        if(model_->faceAngle(1, y) < M_PI / 4) {
-          model_->setFaceAngle(1, y, M_PI / 24);
-        }
-      } else if(key == GLUT_KEY_DOWN) {
-        if(model_->faceAngle(1, y) > -M_PI / 4) {
-          model_->setFaceAngle(1, y, -M_PI / 24);
-        }
+    if(key == GLUT_KEY_RIGHT) {
+      if(model_->faceAngle(face_to_change_, 'x') < M_PI / 4) {
+        model_->setFaceAngle(face_to_change_, 'x', M_PI / 24);
       }
-    } else if(face_to_change_ == 2){
-      if(key == GLUT_KEY_RIGHT) {
-        if(model_->faceAngle(2, x) < M_PI / 4) {
-          model_->setFaceAngle(2, x, M_PI / 24);
-        }
-      } else if(key == GLUT_KEY_LEFT) {
-        if(model_->faceAngle(2, x) > -M_PI / 4) {
-          model_->setFaceAngle(2, x, -M_PI / 24);
-        }
-      } else if(key == GLUT_KEY_UP) {
-        if(model_->faceAngle(2, y) < M_PI / 4) {
-          model_->setFaceAngle(2, y, M_PI / 24);
-        }
-      } else if(key == GLUT_KEY_DOWN) {
-        if(model_->faceAngle(2, y) > -M_PI / 4) {
-          model_->setFaceAngle(2, y, -M_PI / 24);
-        }
+    } else if(key == GLUT_KEY_LEFT) {
+      if(model_->faceAngle(face_to_change_, 'x') > -M_PI / 4) {
+        model_->setFaceAngle(face_to_change_, 'x', -M_PI / 24);
+      }
+    } else if(key == GLUT_KEY_UP) {
+      if(model_->faceAngle(face_to_change_, 'y') < M_PI / 4) {
+        model_->setFaceAngle(face_to_change_, 'y', M_PI / 24);
+      }
+    } else if(key == GLUT_KEY_DOWN) {
+      if(model_->faceAngle(face_to_change_, 'y') > -M_PI / 4) {
+        model_->setFaceAngle(face_to_change_, 'y', -M_PI / 24);
       }
     }
-
   } else if(move_mode_ == "size") {
     if(key == GLUT_KEY_UP) {
       if(model_->b_ < 6) {
