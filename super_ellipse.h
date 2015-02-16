@@ -21,8 +21,6 @@ class SuperEllipse {
 
   float a_, b_, c_, n_;
   int k_;
-  float face_1_x_angle_ = 0, face_1_y_angle_ = 0;
-  float face_2_x_angle_ = 0, face_2_y_angle_ = 0;
   std::string move_mode_ = "move";
 
  private:
@@ -51,6 +49,9 @@ class SuperEllipse {
 
   int draw_mode_ = 0;
   int face_selected_ = 0;
+
+  float face_1_x_angle_ = 0, face_1_y_angle_ = 0;
+  float face_2_x_angle_ = 0, face_2_y_angle_ = 0;
 };
 
 #endif
